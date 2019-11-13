@@ -38,29 +38,11 @@ let plc = new PlcCollector();
 plc.connect();
 GlobalUse.plcCollector = plc;
 
-// import { RfidCollector } from './rfid/rfid-collector';
-// let rfid1 = new RfidCollector();
-// GlobalUse.rfidCollector1 = rfid1;
-// rfid1.connect();
-
-// let rfid2 = new RfidCollector();
-// GlobalUse.rfidCollector2 = rfid2;
-// rfid2.connect();
-
-// setTimeout(() => {
-//     rfid.singleReadWords().then(rsp => {
-//         console.log(rsp);
-//     });
-// }, 3000);
-
 //====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====
 // api route 建立
 
 import plcRoute from './route/plcRoute';
-import rfidRoute from './route/rfidRoute';
-
 app.use('/plc', plcRoute);
-app.use('/rfid', rfidRoute);
 
 //====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====
 
