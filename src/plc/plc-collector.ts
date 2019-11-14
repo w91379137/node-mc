@@ -9,8 +9,8 @@ export class PlcCollector {
 
     connect() {
         this.connection.initiateConnection({
-            port: 8000,
-            host: '192.168.0.11',
+            port: 1026,
+            host: '10.1.1.39',
             ascii: false
         }, (error) => { this.didConnect(error) })
     }

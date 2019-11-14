@@ -21,11 +21,27 @@ tagNameGroupMapDict 就記載所有 group 的地方
 
 
 查詢(post)
-localhost:5000/product/read
+localhost:5001/plc/read
 
 body
 {
 	"group": "groupB"
+}
+
+result
+{
+    "success": true,
+    "result": {
+        "D100101": [
+            0,
+            0
+        ],
+        "D100": 0,
+        "D101": 0,
+        "M0": false,
+        "M1": true,
+        "X1": false
+    }
 }
 
 修改(post)
@@ -35,4 +51,13 @@ body
 {
 	"tagName": "X1",
 	"value": true
+}
+
+result
+{
+    "success": true,
+    "result": {
+        "code": 0,
+        "msg": "success"
+    }
 }
