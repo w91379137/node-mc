@@ -7,8 +7,8 @@ const router = express.Router();
 
 router.post('/read', async (req, res) => {
 
-    let body = req.body
-    let message = checkKeys(body, ['group']);
+    let info = {...req.query, ...req.body};
+    let message = checkKeys(info, ['group']);
     if (message) {
         res.status(400).send({
             success: false,
@@ -17,7 +17,7 @@ router.post('/read', async (req, res) => {
         return
     }
 
-    let group = body.group;
+    let group = info.group;
     let success = true
     let result = await GlobalUse.plcCollector.readGroup(group).catch(() => {
         success = false
@@ -35,8 +35,8 @@ router.post('/read', async (req, res) => {
 
 router.post('/write', async (req, res) => {
 
-    let body = req.body
-    let message = checkKeys(body, ['tagName', 'value']);
+    let info = {...req.query, ...req.body};
+    let message = checkKeys(info, ['tagName', 'value']);
     if (message) {
         res.status(400).send({
             success: false,
@@ -45,8 +45,8 @@ router.post('/write', async (req, res) => {
         return
     }
 
-    let tagName = body.tagName;
-    let value = body.value;
+    let tagName = info.tagName;
+    let value = info.value;
     let success = true
     let result = await GlobalUse.plcCollector.write(tagName, value).catch(() => {
         success = false
@@ -56,6 +56,8 @@ router.post('/write', async (req, res) => {
         success: success,
         result: result
     })
+
+    // res.status(200).send({ a: "test" })
 });
 
 // ====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====

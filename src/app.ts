@@ -24,7 +24,16 @@ app.use(cors(corsOptions));
 
 // Middleware 中介軟體
 function loggerMiddleware(req: express.Request, res: express.Response, next) {
-    console.log(`Method : ${req.method} Path:${req.path} Body:${JSON.stringify(req.body)}`);
+    console.log(
+        `
+        Recive >>
+        Method : ${req.method} 
+        Path:${req.path} 
+        Body:${JSON.stringify(req.body)} 
+        Query string:${JSON.stringify(req.query)}
+        Info: ${JSON.stringify({...req.query, ...req.body})}
+
+        `);
     next();
 }
 app.use(loggerMiddleware);
