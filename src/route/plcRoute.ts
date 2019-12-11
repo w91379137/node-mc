@@ -7,6 +7,8 @@ const router = express.Router();
 
 router.post('/read', async (req, res) => {
 
+    // TODO: 如果plc 沒連線完成 必須 直接回 error
+
     let info = {...req.query, ...req.body};
     let message = checkKeys(info, ['group']);
     if (message) {
@@ -34,6 +36,8 @@ router.post('/read', async (req, res) => {
 // ====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====
 
 router.post('/write', async (req, res) => {
+
+    // TODO: 如果plc 沒連線完成 必須 直接回 error
 
     let info = {...req.query, ...req.body};
     let message = checkKeys(info, ['tagName', 'value']);
