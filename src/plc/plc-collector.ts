@@ -1,5 +1,5 @@
 
-var mc = require('mcprotocol');
+var mc = require('./../mcprotocol');
 
 export class PlcCollector {
 
@@ -90,7 +90,7 @@ export class PlcCollector {
             ALLD: 'D3210,20',
         },
         yc: {
-            D100: 'D100', // 整數
+            // D100: 'D100', // 整數
             // D101: 'D101', // 整數
             // D100101: 'D100,2', // 兩個整數
             // DFLOAT100: 'DFLOAT100', // 浮點數
@@ -99,7 +99,9 @@ export class PlcCollector {
 
             // D104_2: 'D104.5',
             // B0001: 'B0001', // 這個沒有
-            W100: 'W100,164',
+            // X1: "X1",
+            // Y1: "Y1",
+            W100: 'W100,3',
  
         },     
     }

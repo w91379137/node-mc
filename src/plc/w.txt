@@ -1,0 +1,46 @@
+readResponse [
+  m {
+    areaMCCode: 22304, // 該區域起始位置
+    bitNative: true,
+    startRegister: undefined,
+    byteLengthWrite: 1,
+    addr: 'W100,1',
+    useraddr: 'W100',
+    addrtype: 'W',
+    datatype: 'X',
+    bitOffset: undefined,
+    byteOffset: undefined,
+    offset: 100,
+    arrayLength: 1, // 一次讀取幾節 W100,3 就是 3
+    totalArrayLength: 1, // 一次讀取幾節
+    maxWordLength: [Function],
+    dataTypeByteLength: [Function],
+    dtypelen: 2,
+    multidtypelen: 2,
+    byteLength: 2,
+    byteLengthWithFill: undefined,
+    readTransportCode: undefined,
+    writeTransportCode: undefined,
+    byteBuffer: ,
+    writeBuffer: ,
+    qualityBuffer: ,
+    writeQualityBuffer: ,
+    value: false,
+    writeValue: undefined,
+    valid: false,
+    errCode: undefined,
+    part: undefined,
+    maxPart: undefined,
+    isOptimized: false,
+    resultReference: undefined,
+    itemReference: [Circular],
+    clone: [Function],
+    badValue: [Function],
+    remainder: 0,
+    requestOffset: 100,
+    wordLength: 1,
+    parts: 1,
+    requestReference: [ [m] ],
+    quality: 'OK'
+  }
+]

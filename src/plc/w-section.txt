@@ -1,0 +1,61 @@
+
+
+PLCItem 每個讀取物件
+
+MCProtocol.prototype.prepareReadPacket 
+在 itemList.length == 0
+讀取前可以看到 PLCItem
+
+function stringToMCAddr
+建立 PLCItem 的地方
+
+輸入轉換的資訊
+
+
+新增資料型態
+switch (prefix) {
+
+case "W": 
+if (typeof(postDotNumeric) !== 'undefined' || theItem.addrtype === 'W') {
+			theItem.datatype = 'X';
+			theItem.bitOffset = postDotNumeric;
+		} else {				
+			theItem.datatype = "INT";
+		}
+
+新增記憶體起始位置
+switch (theItem.addrtype) {
+case "W":
+theItem.areaMCCode = 0x5720;
+
+https://dl.mitsubishielectric.com/dl/fa/document/manual/plc/sh080008/sh080008y.pdf
+查 5820 可以看到記憶體位置
+
+在最後可以看到 設定完成的 PLCItem
+
+
+新增讀取限制
+function PLCItem
+
+this.maxWordLength 要設定讀取 長度 2個word
+case "W":
+retrun 64
+
+
+this.dataTypeByteLength 要設定讀取 dataTypeByteLength 用途不明
+case "W":
+retrun 4
+
+
+readAllItems 準備送出
+sendReadPacket 送出讀取 self.connectionID 讀取編號？
+onResponse 回收
+readResponse 解析
+
+
+目前返回 bool
+processMCReadItem 重組 item
+依照 datatype 來做
+
+█ SendReadPacket called 是依照 英文分區字母來 呼叫的
+
