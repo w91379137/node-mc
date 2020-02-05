@@ -1,10 +1,16 @@
 
 var mc = require('./../mcprotocol');
 
+let padding = function (n) {
+    return `000${n}`.slice(-3)
+}
 export class PlcCollector {
 
     // ====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====
-
+    // 公司    10.1.1.39 1026
+    // PLC    192.168.3.120 1025
+    // PLC1   192.168.3.100 1026?
+    // PLC2   192.168.3.110 1026?
     connection = new mc;
 
     connect() {
@@ -89,7 +95,7 @@ export class PlcCollector {
             ALLM: 'M3210,10',
             ALLD: 'D3210,20',
         },
-        yc: {
+        Fried: {
             // D4660: 'D4660,4', // 整數
             // D0100: 'D0100', // 整數
             // D101: 'D101', // 整數
@@ -107,10 +113,19 @@ export class PlcCollector {
             // W0101: 'W0101',
             // W0102: 'W0102',
             // W0103: 'W0103',
-            W0104: 'W0104',
-            W0105: 'W0105',
-            W0100x5: 'W0100,5',
-        }, 
+            // TT: 'D4096',
+
+            Pot1: `W${padding(0x0110)}`,
+            Pot2: `W${padding(0x0120)}`,
+            Pot3: `W${padding(0x0130)}`,
+            Pot4: `W${padding(0x0140)}`,
+            OrderInfo: `W${padding(0x0000)},6`, // 0~5
+            RecipeFire: `W${padding(0x1000)},9`,
+            RecipeTime: `W${padding(0x1015)},8`,
+            RecipeHeat: `W${padding(0x101E)}`,
+            RecipeMatBox: `W${padding(0x102B)},6`,
+            RecipeMatNumber: `W${padding(0x1033)},8`,
+        },
     }
 
     // 把 每個 group 放一起
@@ -146,11 +161,11 @@ export class PlcCollector {
             if (this.lastGroup != name) {
                 this.connection.removeItems(this.lastItems);
                 this.lastItems = Object.keys(this.tagNameGroupMapDict[name])
-    
+
                 this.connection.addItems(this.lastItems);
                 this.lastGroup = name;
             }
-            
+
             this.connection.readAllItems((error, values) => {
 
                 if (error) {
