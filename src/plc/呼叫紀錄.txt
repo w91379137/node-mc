@@ -2,9 +2,11 @@
 // ====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====
 
 W0100,1 到 16 
-01 ff 0a 00 | 64 00 00 00 | 20 57 | 01 00
+01 ff 0a 00 | 00 01 00 00 | 20 57 | 01 00
 81 00 00 00
 00 00
+
+W0256
 
 W0100,17 到 32
 01 ff 0a 00 | 64 00 00 00 | 20 57 | 02 00
@@ -73,6 +75,24 @@ Accessible device range
 組合出 > 
 D2 04 00 00 | 20 44
 Device number(offset 4) | Device code(2)
+
+
+
+
+Function List for 1E
+
+Batch read in word units (command: 01) p405
+
+
+
+
+Head device (Device number + Device code) p397
+Device number D2 04 00 00 
+Device code 20 57
+Number of device points 01
+Fixed value 00
+
+
 
 // ====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====
 

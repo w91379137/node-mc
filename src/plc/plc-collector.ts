@@ -2,15 +2,15 @@
 var mc = require('./../mcprotocol');
 
 let padding = function (n) {
-    return `000${n}`.slice(-3)
+    return `000${n}`.slice(-8)
 }
 export class PlcCollector {
 
     // ====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====
     // 公司    10.1.1.39 1026
     // PLC    192.168.3.120 1025
-    // PLC1   192.168.3.100 1026?
-    // PLC2   192.168.3.110 1026?
+    // PLC1   192.168.3.100 1025
+    // PLC2   192.168.3.110 1025
     connection = new mc;
 
     connect() {
@@ -113,19 +113,23 @@ export class PlcCollector {
             // W0101: 'W0101',
             // W0102: 'W0102',
             // W0103: 'W0103',
-            // TT: 'D4096',
+            // TT: `W${padding(0x1000)}`,
+            TT: `D9000`,
 
-            Pot1: `W${padding(0x0110)}`,
-            Pot2: `W${padding(0x0120)}`,
-            Pot3: `W${padding(0x0130)}`,
-            Pot4: `W${padding(0x0140)}`,
-            OrderInfo: `W${padding(0x0000)},6`, // 0~5
-            RecipeFire: `W${padding(0x1000)},9`,
-            RecipeTime: `W${padding(0x1015)},8`,
-            RecipeHeat: `W${padding(0x101E)}`,
-            RecipeMatBox: `W${padding(0x102B)},6`,
-            RecipeMatNumber: `W${padding(0x1033)},8`,
+            // Pot1: `W${padding(0x0110)}`,
+            // Pot2: `W${padding(0x0120)}`,
+            // Pot3: `W${padding(0x0130)}`,
+            // Pot4: `W${padding(0x0140)}`,
+            // OrderInfo: `W${padding(0x0000)},6`, // 0~5
+            // RecipeFire: `W${padding(0x1000)},9`,
+            // RecipeTime: `W${padding(0x1015)},8`,
+            // RecipeHeat: `W${padding(0x101E)}`,
+            // RecipeMatBox: `W${padding(0x102B)},6`,
+            // RecipeMatNumber: `W${padding(0x1033)},8`,
         },
+
+        // D 位置是 10 進位 在plc 檢視也是 所以不用特別轉
+        // W 位置是 16 進位
     }
 
     // 把 每個 group 放一起
